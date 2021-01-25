@@ -21,3 +21,9 @@ Project to practice unit and E2E tests in a small Angular project following the 
 ## Run Application:
 
 - npm start (Don't use ng serve because we need the proxy for the server)
+
+<a name="#test-app"></a>
+
+## Test Application:
+
+- npm test (You should see on terminal some info and automatically the Karma window shoul be opened)
