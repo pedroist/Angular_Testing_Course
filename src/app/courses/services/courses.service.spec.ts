@@ -1,3 +1,4 @@
+import { Course } from './../model/course';
 import { COURSES } from './../../../../server/db-data';
 import { CoursesService } from './courses.service';
 import { TestBed } from '@angular/core/testing';
@@ -61,6 +62,28 @@ describe('CoursesService', () => {
 
         req.flush(COURSES[12]);
     })
+
+    it('should save the course data', () => {
+        const changes: Partial<Course> = {titles: {description: 'Testing Course'}};
+
+        coursesService.saveCourse(12,
+            {titles: {description: 'Testing Course'}})
+            .subscribe(course => {
+
+                expect(course.id).toBe(12);
+            });
+            
+        const req = httpTestingController.expectOne('/api/courses/12');
+
+        expect(req.request.method).toEqual('PUT');
+
+        expect(req.request.body.titles.description).toEqual(changes.titles.description);
+
+        req.flush({
+            ...COURSES[12],
+            ...changes
+        });
+    });
 
     afterEach(() => {
         //Insure that no other unintended HTTP requests are made, we should call this at the end of each test
