@@ -16,7 +16,7 @@ describe('Calculator service', () => {
             ]
         });
         //provide is for dependency injection, since the Calculator service needs the loggerService
-        calculator = TestBed.get(CalculatorService);
+        calculator = TestBed.inject(CalculatorService);
     });
 
     it('should add two numbers', () => {

@@ -14,8 +14,8 @@ describe("CoursesService", () => {
             ]
         });
 
-        coursesService = TestBed.get(CoursesService);
-        testingController = TestBed.get(HttpTestingController); //To specify test data
+        coursesService = TestBed.inject(CoursesService);
+        testingController = TestBed.inject(HttpTestingController); //To specify test data
     });
 
     it("should retrieve all courses", () => {
